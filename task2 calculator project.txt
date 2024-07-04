@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sty.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <input type="text" placeholder="0" id="output-screen">
+            <button onclick="Clear()">Cl</button>
+            <button onclick="del()">DEL</button>
+            <button onclick="display('%')">%</button>
+            <button onclick="display('/')">/</button>
+            <button onclick="display('7')">7</button>
+            <button onclick="display('8')">8</button>
+            <button onclick="display('9')">9</button>
+            <button onclick="display('*')">*</button>
+            <button onclick="display('4')">4</button>
+            <button onclick="display('5')">5</button>
+            <button onclick="display('6')">6</button>
+            <button onclick="display('-')">-</button>
+            <button onclick="display('1')">1</button>
+            <button onclick="display('2')">2</button>
+            <button onclick="display('3')">3</button>
+            <button onclick="display('+')">+</button>
+            <button onclick="display('.')">.</button>
+            <button onclick="display('0')">0</button>
+            <button onclick="Calculate()" class="equal">=</button>
+
+
+        </div>
+    </div>
+    <script src="calc.js"></script>
+</body>
+</html>
+-----------------------------------css-------------------------------------
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #ecf0f3;
+    font-family:sans-serif ;
+    outline: none;
+    color: #ffffff;
+}
+.container{
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.calculator{
+    background:url ("https://img.freepik.com/free-photo/gradient-blue-abstract-background-smooth-dark-blue-with-black-vignette-studio_1258-68032.jpg?size=626&ext=jpg&ga=GA1.1.44546679.1717286400&semt=ais_user");
+    padding: 15px;
+    border-radius: 30px;
+    box-shadow: inset 5px 5px 12px ,
+                       5px 5px 12px rgba(0,0,0,.16);
+    display: grid;
+    grid-template-columns: repeat(4, 68px);
+}
+input{
+    grid-column: span 4;
+    height: 70px;
+    width: 260px;
+    background:url("https://img.freepik.com/free-photo/gradient-blue-abstract-background-smooth-dark-blue-with-black-vignette-studio_1258-68032.jpg?size=626&ext=jpg&ga=GA1.1.44546679.1717286400&semt=ais_user");
+    box-shadow: inset -5px -5px 12px black,
+                inset 5px 5px 12px rgba(0,0,0,.16);
+    
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 50px;
+    text-align: end;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+button{
+    height:48px;
+    width: 48px;
+    background:url("https://img.freepik.com/free-photo/gradient-blue-abstract-background-smooth-dark-blue-with-black-vignette-studio_1258-68032.jpg?size=626&ext=jpg&ga=GA1.1.44546679.1717286400&semt=ais_user");
+    box-shadow: -5px -5px 12px black,
+                 5px 5px 12px rgba(0,0,0,.16);
+    border: none ;
+    border-radius: 50%;
+    margin: 8px;
+    font-size: 16px;
+
+}
+.equal{
+    width: 115px;
+    border-radius: 40px;
+    background:url("https://img.freepik.com/free-photo/gradient-blue-abstract-background-smooth-dark-blue-with-black-vignette-studio_1258-68032.jpg?size=626&ext=jpg&ga=GA1.1.44546679.1717286400&semt=ais_user");
+    box-shadow: -5px -5px 12px black,
+                 5px 5px 12px rgba(0,0,0,.16);
+
+}
+----------------------------------------js-------------------------------------
+let outputScreen = document.getElementById("output-screen");
+function display(num){
+     outputScreen.value+=num;
+}
+function Calculate(){
+    try{
+        outputScreen.value=eval(outputScreen.value);
+    }
+        
+catch(err)
+    {
+     alert("Invalid");
+  }
+}
+function Clear()
+{
+   outputScreen.value="";
+}
+function del()
+{
+    outputScreen.value=outputScreen.value.slice(0,-1);
+}
